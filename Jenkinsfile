@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage('Git Checkout') {
 			steps {
-				git credentialsId: 'git_credentials', url:''
+				git credentialsId: 'git_credentials', url:'https://github.com/Emilmariya/Test-project.git'
 			}
 	}
 
@@ -16,7 +16,7 @@ pipeline {
 			script {
 				def rtMaven = Artifactory.newMavenBuild()
 				rtMaven.tool = 'Maven'
-                def buildInfo = rtMaven.run pom: './TestAutomation/Code/stryker/pom.xml', goals: 'clean install'
+                def buildInfo = rtMaven.run pom: './NewStryker/pom.xml', goals: 'clean install'
 }
 }
 }
