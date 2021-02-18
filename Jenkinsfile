@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        PATH = "/Newstrykerproject/pom.xml:$PATH"
+        PATH = "/opt/Maven 3.6/bin:$PATH"
     }
     stages{
     stage('ScM Checkout'){
