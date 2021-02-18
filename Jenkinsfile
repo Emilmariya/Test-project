@@ -3,6 +3,7 @@ agent any
 stages {
 stage ('Compile Stage') {
 steps {
+   git url:'https://github.com/Emilmariya/Test-project.git'
 withMaven(maven : 'apache-maven-3.6.3') {
 bat'mvn clean compile'
 }
