@@ -1,27 +1,31 @@
+pipeline { 
+    agent any
 
-pipeline {
-	agent any
-	
-	stages {
-		stage('Git Checkout') {
-			steps {
-				git credentialsId: 'git_credentials', url:'https://github.com/Emilmariya/Test-project.git'
-			}
-	}
-
-    
-      
-    stage ('Maven Build'){
-			steps{
-			script {
-				def rtMaven = Artifactory.newMavenBuild()
-				rtMaven.tool = 'Maven'
-                def buildInfo = rtMaven.run pom: './Newstrykerproject/pom.xml', goals: 'clean install'
+    stages {
+        stage('Build') {
+            
+            steps {
+                git url:'https://github.com/Emilmariya/Test-project.git'
+                echo 'Building..'
+                bat "mvn clean"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                bat "mvn test"
+            }
+        }
+        stage('compile') {
+            steps {
+                echo 'compile..'
+                
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
-}
-}
-
-   
-}
- }   
-    
