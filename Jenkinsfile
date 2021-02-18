@@ -5,10 +5,14 @@ pipeline{
     }
     stages{
     stage('ScM Checkout'){
-     git credentialsId: 'git_credentials', url:'https://github.com/Emilmariya/Test-project.git'
+        steps{
+            git credentialsId: 'git_credentials', url:'https://github.com/Emilmariya/Test-project.git'
+        }
     }
-    stage('Compile-Package'){
+    stage('Clean install'){
+        steps{
          sh "mvn clean install"
+        }
     }
     }
 }
