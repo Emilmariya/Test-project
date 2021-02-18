@@ -1,31 +1,26 @@
-pipeline { 
-    agent any
-
-    stages {
-        stage('Build') {
-            
-            steps {
-                git url:'https://github.com/Emilmariya/Test-project.git'
-                echo 'Building..'
-                bat "mvn clean"
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                bat "mvn test"
-            }
-        }
-        stage('compile') {
-            steps {
-                echo 'compile..'
-                
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+pipeline {
+agent any
+stages {
+stage ('Compile Stage') {
+steps {
+withMaven(maven : 'apache-maven-3.6.3') {
+bat'mvn clean compile'
+}
+}
+}
+stage ('Testing Stage') {
+steps {
+withMaven(maven : 'apache-maven-3.6.3') {
+bat'mvn test'
+}
+}
+}
+stage ('Install Stage') {
+steps {
+withMaven(maven : 'apache-maven-3.6.3') {
+bat'mvn install'
+}
+}
+}
+}
 }
