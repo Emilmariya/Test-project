@@ -1,21 +1,27 @@
+
 pipeline {
-agent any
-stages {
-stage ('Compile Stage') {
-steps {
-   git url:'https://github.com/Emilmariya/Test-project.git'
+	agent any
+	
+	stages {
+		stage('Git Checkout') {
+			steps {
+				git credentialsId: 'git_credentials', url:''
+			}
+	}
 
+    
+      
+    stage ('Maven Build'){
+			steps{
+			script {
+				def rtMaven = Artifactory.newMavenBuild()
+				rtMaven.tool = 'Maven'
+                def buildInfo = rtMaven.run pom: './TestAutomation/Code/stryker/pom.xml', goals: 'clean install'
 }
 }
-stage ('Testing Stage') {
-steps {
+}
 
+   
 }
-}
-stage ('Install Stage') {
-steps {
-
-}
-}
-}
-}
+ }   
+    
