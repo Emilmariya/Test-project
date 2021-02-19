@@ -11,7 +11,11 @@ pipeline{
     }
     stage('Clean install'){
         steps{
-         bat "mvn clean install"
+         script {
+				def rtMaven = Artifactory.newMavenBuild()
+				rtMaven.tool = 'Maven'
+                def buildInfo = rtMaven.run pom: './TestAutomation/Code/stryker/pom.xml', goals: 'clean install'
+}
         }
     }
     }
