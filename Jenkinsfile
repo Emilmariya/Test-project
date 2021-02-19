@@ -1,8 +1,6 @@
 pipeline{
     agent any
-    environment{
-        PATH = "/opt/Maven 3.6/bin:$PATH"
-    }
+  
     stages{
     stage('ScM Checkout'){
         steps{
