@@ -14,7 +14,7 @@ pipeline{
          script {
 				def rtMaven = Artifactory.newMavenBuild()
 				rtMaven.tool = 'Maven'
-                def buildInfo = rtMaven.run pom: './TestAutomation/Code/stryker/pom.xml', goals: 'clean install'
+                def buildInfo = rtMaven.run pom: './Newstrykerproject/pom.xml', goals: 'clean install'
 }
         }
     }
