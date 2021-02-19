@@ -11,7 +11,7 @@ pipeline{
         steps{
          script {
 				def rtMaven = Artifactory.newMavenBuild()
-				rtMaven.tool = 'Maven'
+				rtMaven.tool = 'Maven 3.6'
                 def buildInfo = rtMaven.run pom: './Newstrykerproject/pom.xml', goals: 'clean install'
 }
         }
