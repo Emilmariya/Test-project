@@ -17,6 +17,8 @@ plugin = {
                }
 
 )
+//src/test/resources/Features/CardiacICU.feature
+//src/test/resources/Features
 //json:target/JSONreports/report.json
 // "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
 //html:target/Htmlreports/report.html
