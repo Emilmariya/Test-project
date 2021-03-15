@@ -43,7 +43,7 @@ public class CardiacICU {
 
 	@And("user type hospitalcode")
 	public void user_type_hospitalcode() {
-		driver.findElement(By.xpath("input[@type='password']")).sendKeys("12349");
+		driver.findElement(By.xpath("//input[@type='password']")).sendKeys("12349");
 
 	}
 
